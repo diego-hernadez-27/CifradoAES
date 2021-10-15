@@ -81,7 +81,7 @@ function descifradin() {
     const nmbh = document.getElementById("llave").value;
     var descifrado = CryptoJS.AES.decrypt(hj, nmbh);
     if (hj == "" || nmbh == "") {
-        swal("Error", "No se eligió nungún archivo.", "error")
+        swal("Error", "Campos vacios", "error")
     } else {
         document.getElementById("resultadosxd").innerHTML = descifrado;
         document.getElementById("mcifrado").innerHTML = descifrado.toString(CryptoJS.enc.Utf8);
