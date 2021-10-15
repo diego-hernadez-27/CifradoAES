@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/estilos2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="JS/archivos.js"></script>
+    <title>Descifrado</title>
+</head>
+
+<body>
+
+    <form action="">
+
+        <h2>Descifrado AES</h2>
+
+        <h4>By: Hernández Reyes Diego Alberto 5IV8</h4>
+        <br>
+        <br>
+
+        <div id="archivito">
+            <input type="file" id="archivoXD" placeholder="Archivo a descifrar">
+        </div>
+
+        <textarea name="mensaje" id="mensaje" placeholder="Mensaje a descifrar" readonly></textarea>
+
+        <textarea name="llave" id="llave" placeholder="Llave"></textarea>
+
+        <div>
+            <table>
+                <th><input type="button" id="boton" value="Descifrar" onclick="descifradin()"></th>
+            </table>
+        </div>
+
+        <textarea name="resultadosxd" id="resultadosxd" placeholder="Mensaje hexadecimal" readonly></textarea>
+
+        <textarea name="mcifrado" id="mcifrado" placeholder="Mensaje descifrado" readonly></textarea>
+
+        <textarea id="nomarch" placeholder="Nombre del archivo"></textarea>
+
+        <div>
+            <table>
+                <th><input type="button" id="a" onclick="atxt()" value="TXT"></th>
+                <th><input type="button" id="b" onclick="adoc()" value="DOC"></th>
+                <th><input type="button" id="c" onclick="apdf()" value="PDF"></th>
+            </table>
+        </div>
+
+        <div id="navegar">
+            <a href="index.html">Ir a cifrado</a>
+        </div>
+
+    </form>
+
+    <br>
+    <br>
+
+    <script>
+        function atxt() {
+            var cth = document.getElementById("mcifrado").value;
+            var blob = new Blob([cth], { type: "text/plain;charset=utf-8" });
+            var nomarch = document.getElementById("nomarch").value;
+            
+            if (cth == "") {
+                swal('Error', 'No hay un mensaje cifrado', 'error');
+            }else{
+                if (nomarch == ""){
+                    swal('Error', 'Dale nombre al archivo', 'error');
+                }else {
+                    saveAs(blob, nomarch+".txt");
+                }
+            }
+        }
+
+        function adoc() {
+            var cth = document.getElementById("mcifrado").value;
+            var blob = new Blob([cth], { type: "text/plain;charset=utf-8" });
+            var nomarch = document.getElementById("nomarch").value;
+            
+            if (cth == "") {
+                swal('Error', 'No hay un mensaje cifrado', 'error');
+            }else{
+                if (nomarch == ""){
+                    swal('Error', 'Dale nombre al archivo', 'error');
+                }else {
+                    saveAs(blob, nomarch+".doc");
+                }
+            }
+        }
+
+        function apdf() {
+            var cth = document.getElementById("mcifrado").value;
+            var blob = new Blob([cth], { type: "text/plain;charset=utf-8" });
+            var nomarch = document.getElementById("nomarch").value;
+
+            if (cth == "") {
+                swal('Error', 'No hay un mensaje cifrado', 'error');
+            }else{
+                if (nomarch == ""){
+                    swal('Error', 'Dale nombre al archivo', 'error');
+                }else {
+                    saveAs(blob, nomarch+".pdf");
+                }
+            }
+        }
+    </script>
+
+    <script src="JS/operaciones.js"></script>
+
+</body>
+
+</html>
